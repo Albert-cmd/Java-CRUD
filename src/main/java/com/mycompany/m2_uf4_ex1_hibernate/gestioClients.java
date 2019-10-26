@@ -5,10 +5,8 @@
  */
 package com.mycompany.m2_uf4_ex1_hibernate;
 
-import com.mysql.cj.xdevapi.Session;
-import com.mysql.cj.xdevapi.SessionFactory;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 
@@ -27,7 +25,7 @@ public class gestioClients {
 
     }
 
-    public void afegeixClient(int codi, String nom, String adreca, Integer codiPostal, String poblacio, Double limitCredit, Date dataUltimaCompra) {
+    public void afegeixClient(int codi, String nom, String adreca, Integer codiPostal, String poblacio, Double limitCredit, String dataUltimaCompra) {
 
         // Obrir la sessió
         org.hibernate.SessionFactory sessionFactory = HibernateSession.getSessionFactory();
@@ -41,7 +39,9 @@ public class gestioClients {
         c.setCodiPostal(codiPostal);
         c.setPoblacio(poblacio);
         c.setLimitCredit(limitCredit);
-        c.setDataUltimaCompra(dataUltimaCompra);
+
+        c.setDataUltimaCompra(Date.valueOf(dataUltimaCompra));
+        
         session.save(c);
 
         //Tancar la sessió
@@ -96,25 +96,21 @@ public class gestioClients {
 
     public void buscarNom(String nom) {
 
-         // Obrir la sessió
+        // Obrir la sessió
         org.hibernate.SessionFactory sessionFactory = HibernateSession.getSessionFactory();
         org.hibernate.Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
-        Query getClients = session.createQuery("from Clients where nom like :nom").setParameter("nom","%"+nom+"%");
-        
-        List<Clients> clients = getClients.list();
-        
-        for (Clients client : clients ) {
-            
-            System.out.println(client.toString());
-            
-        }
-               
-    }
-    
 
-    
-    
+        Query getClients = session.createQuery("from Clients where nom like :nom").setParameter("nom", "%" + nom + "%");
+
+        List<Clients> clients = getClients.list();
+
+        for (Clients client : clients) {
+
+            System.out.println(client.toString());
+
+        }
+
+    }
 
 }

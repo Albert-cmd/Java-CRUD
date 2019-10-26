@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principal;
+package com.mycompany.m2_uf4_ex1_hibernate;
 
 import com.mycompany.m2_uf4_ex1_hibernate.Clients;
+import com.mycompany.m2_uf4_ex1_hibernate.gestioClients;
 import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -44,11 +48,40 @@ public class main {
 
 // !!!!!!!!!!!!!!!!!!!!!!11  Mirar todo en el dosier de HIBERNATE  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-        ArrayList<Clients> clients = new ArrayList(); 
+//SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass().buildSessionFactory();
+    Clients client = new Clients();
+    
+    gestioClients gc = new gestioClients(); 
+        System.out.println("Inserta:");
+    
+    gc.afegeixClient(0, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");
+    
+        List<Clients> tornaTots = gc.tornaTots();
+        
+        for (Clients clients : tornaTots) {
+            
+            System.out.println(clients.toString());
+        }
 
+    
+    
+    
+    System.out.println("Busca:");
+    
+    gc.buscarNom("Albert");
+    
+        System.out.println("Elimina:");
+        
+    gc.eliminaClient(0);
             
         
+        
+        for (Clients clients : tornaTots) {
+            
+            System.out.println(clients.toString());
+        }
 
+        
        
     }
     
