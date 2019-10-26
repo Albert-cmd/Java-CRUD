@@ -51,11 +51,16 @@ public class main {
 //SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass().buildSessionFactory();
     Clients client = new Clients();
     
-    gestioClients gc = new gestioClients(); 
+        gestioClients gc = new gestioClients(); 
+    
+        System.out.println("!!!!!!!!!!!!!!!!!!!!COMENÇA CONEXIO!!!!!!!!!!!!!!!!!!!!1");
+        System.out.println("--------------------------------------------------------");
         System.out.println("Inserta:");
     
-    gc.afegeixClient(0, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");
-    
+        gc.afegeixClient(0, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");
+        
+        
+        System.out.println("MOSTRA TOTS ELS CLIENTS");
         List<Clients> tornaTots = gc.tornaTots();
         
         for (Clients clients : tornaTots) {
@@ -70,7 +75,7 @@ public class main {
     
     gc.buscarNom("Albert");
     
-        System.out.println("Elimina:");
+    System.out.println("Elimina:");
         
     gc.eliminaClient(0);
             
@@ -81,8 +86,19 @@ public class main {
             System.out.println(clients.toString());
         }
 
+        System.out.println("Torno a afegir un:");
+        gc.afegeixClient(11232, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");   
+                gc.afegeixClient(125, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");   
+
+               gc.afegeixClient(33, "Albert", "Calle de misco", 2231, "Cardedeu", 555.555,"2019-6-22");   
+
+        System.out.println("Torna a mostrar: ");
         
-       
+         for (Clients clients : tornaTots) {
+            
+            System.out.println(clients.toString());
+        }
+        
     }
     
 }
