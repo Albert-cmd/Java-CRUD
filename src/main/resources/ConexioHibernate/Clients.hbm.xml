@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 22, 2019 5:37:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.mycompany.m2_uf4_ex1_hibernate.Clients" table="clients" catalog="ex1" optimistic-lock="version">
+        <id name="codi" type="int">
+            <column name="codi" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="nom" length="30" />
+        </property>
+        <property name="adre&#231;a" type="string">
+            <column name="adre&#231;a" length="30" />
+        </property>
+        <property name="codiPostal" type="java.lang.Integer">
+            <column name="codiPostal" />
+        </property>
+        <property name="poblacio" type="string">
+            <column name="poblacio" length="30" />
+        </property>
+        <property name="limitCredit" type="java.lang.Double">
+            <column name="limitCredit" precision="22" scale="0" />
+        </property>
+        <property name="dataUltimaCompra" type="date">
+            <column name="dataUltimaCompra" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
